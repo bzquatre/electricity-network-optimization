@@ -1,0 +1,123 @@
+QWidget#main {
+        background-color: white;
+    }
+
+
+QFrame#newentry,QFrame#newinvoice {
+    border: 1px solid #e6eef9;
+    margin: 100% 200%;
+}
+QTabWidget::tab-bar {
+    alignment: center;
+
+}
+QTabWidget::pane {
+    border: 0px solid gray;
+    
+}
+QTabBar::tab {
+    background-color: white;
+    font-size: 16px; 
+    color:#185ee0;
+    border: 1px solid #e6eef9;
+    padding: 8px;
+    margin:2px;
+    width:100px;
+    height:20px
+}
+QTabBar::tab:selected {
+    background-color: #e6eef9;
+}
+QTableWidget{
+    border:none;
+}
+QHeaderView::section{
+    Background-color: rgb(255, 255, 255);
+    color:#000;
+    border: 0px solid #ffffff;
+    border-radius:0px;
+    padding: 0px;
+    margin: 0px;
+}
+QHeaderView {padding:0px;
+background-color:#ffffff;
+font-size: 20px;
+color:rgba(25, 24, 66, 1);
+border-radius:0px;}
+
+
+QLabel[text='Products'],QLabel[text='Clients'],QLabel[text='Suppliers'],QLabel[text='Entry'],QLabel[text='Invoice']  {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .125rem;
+    color: #818ea3;
+    text-transform: uppercase !important;}
+QLabel[text='Product List'],QLabel[text='Liste de Client'],QLabel[text='Supplier List'],QLabel[text='List of products entered'],QLabel[text='Invoices List']  {
+    font-family:Segoe UI,Arial,sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    color: #3d5170;
+}
+QLineEdit,QComboBox,QDateEdit{
+    height: auto;
+    padding:4px 7px;
+    font-size: 14px;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #e1e5eb;
+    font-weight: 300;
+    border-radius: 5px;
+}
+QLineEdit:focus , QComboBox:focus,QDateEdit:focus{
+    height: auto;
+    padding:4px 7px;
+    font-size: 14px;
+    color: #495057;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    font-weight: 300;
+    border-radius: 5px;
+}
+QPushButton[text='insert'],QPushButton[text='next'],QPushButton[text='validate'] {
+    height: auto;
+    padding:4px 17px;
+    font-size: 14px;
+    color:#1adba2 ;
+    background-color:#fff;
+    border: 2px solid #1adba2 ;
+    font-weight: bold;
+    border-radius: 5px;
+}
+QPushButton[text='insert']:hover,QPushButton[text='validate']:hover,QPushButton[text='next']:hover{
+    color: #fff;
+    background-color:#1adba2;
+}
+QPushButton[text='delete'] {
+    height: auto;
+    padding:4px 17px;
+    font-size: 14px;
+    color:#c4183c ;
+    background-color:#fff;
+    border: 2px solid #c4183c ;
+    font-weight: bold;
+    border-radius: 5px;
+}
+QPushButton[text='delete']:hover{
+    color: #fff;
+    background-color:#c4183c;}
+QPushButton[text='update'],QPushButton[text='Cost'],QPushButton[text='Draw'] {
+    height: auto;
+    padding:4px 17px;
+    font-size: 14px;
+    color:#007bff ;
+    background-color:#fff;
+    border: 2px solid #007bff ;
+    font-weight: bold;
+    border-radius: 5px;
+}
+QPushButton[text='update']:hover,QPushButton[text='Cost']:hover,QPushButton[text='Draw']:hover{
+    color: #fff;
+    background-color:#007bff;}
