@@ -3,7 +3,7 @@ QWidget#main {
     }
 
 
-QFrame#newentry,QFrame#newinvoice {
+QFrame#calculate {
     border: 1px solid #e6eef9;
     margin: 100% 200%;
 }

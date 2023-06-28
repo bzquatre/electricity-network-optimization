@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication,QWidget,QTabWidget,QHBoxLayout,QFileDialog
+from PyQt5.QtWidgets import QApplication,QMainWindow,QWidget,QTabWidget,QHBoxLayout,QFileDialog
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from ui.poles import QPoles
@@ -10,26 +10,47 @@ from ui.lines import QLines
 import pandas as pd
 import sys,sqlite3,os
 conn=sqlite3.connect('database.db')
-class MainWindo(QWidget):
-    def __init__(self):
-        super().__init__(parent=None)
-        self.setWindowIcon(QIcon('Icon.ico'))
-        self.setWindowTitle("USTHB")
-        self.setObjectName("main")
-        self.setMinimumWidth(700)
+class QDataWindo(QWidget):
+    def __init__(self,parent=None):
+        super().__init__(parent=parent)
         self.tab_widget=QTabWidget(self)
-        self.pages=[ [QPoles(self),QIcon(''),'Poles'],
+        self.pages=[
+                    [QPoles(self),QIcon(''),'Poles'],
                     [QCustomers(self),QIcon(''),'Customers'],
                     [QResources(self),QIcon(''),'Resources'],
                     [QLines(self),QIcon(''),'Lines'],
-                    [QRequiredEnergys(self),QIcon(''),'Required Energys'],
-                    [QCalculate(self),QIcon(''),'Calculate'],
+                    [QRequiredEnergys(self),QIcon(''),'Required Energys']
                     ]
         list(map(lambda i: self.tab_widget.addTab(i[0],i[1],i[2]),self.pages))
         """
         self.pages[3][0].contienentre.valider.clicked.connect(self.refreshData)
         self.pages[4][0].contienentre.valider.clicked.connect(self.refreshData)
         """
+        self.setLayout()
+    def setLayout(self) :
+        a0=QHBoxLayout()
+        a0.addWidget(self.tab_widget)
+        return super().setLayout(a0)
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__(parent=None)
+        self.setWindowIcon(QIcon('Icon.ico'))
+        self.setWindowTitle("USTHB")
+        self.setObjectName("main")
+        self.setMinimumWidth(700)
+
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+
+        self.tab_widget = QTabWidget(central_widget)
+        self.pages = [ 
+            [QCalculate(self), QIcon(''), 'Calculate'],
+            [QDataWindo(self), QIcon(''), 'Data'],
+            [QWidget(self), QIcon(''), 'About'],
+        ]
+        for page in self.pages:
+            self.tab_widget.addTab(page[0], page[1], page[2])
+
         self.setLayout()
     def keyPressEvent(self, event):
         modifiers = QApplication.keyboardModifiers()
@@ -77,10 +98,10 @@ class MainWindo(QWidget):
                 conn.commit()
         for i in range(5):
             self.pages[i][0].initResearch(),self.pages[i][0].initTable()
-    def setLayout(self) :
-        a0=QHBoxLayout()
-        a0.addWidget(self.tab_widget)
-        return super().setLayout(a0)
+    def setLayout(self):
+        layout = QHBoxLayout()
+        layout.addWidget(self.tab_widget)
+        self.centralWidget().setLayout(layout)
 class Application(QApplication):
     def __init__(self):
         super().__init__(sys.argv)
@@ -90,6 +111,6 @@ class Application(QApplication):
         self.setStyleSheet(open('style.qss').read())
 if __name__=="__main__":
     app=Application() 
-    mainwindo=MainWindo()
+    mainwindo=MainWindow()
     mainwindo.showMaximized()  
     sys.exit(app.exec_())
