@@ -1,6 +1,6 @@
 
 
-from PyQt5.QtWidgets import QMessageBox,QWidget,QHBoxLayout,QLineEdit,QPushButton,QVBoxLayout
+from PyQt5.QtWidgets import QMessageBox,QWidget,QLabel,QHBoxLayout,QLineEdit,QPushButton,QVBoxLayout
 from PyQt5.QtCore import QRegExp, Qt
 from PyQt5.QtGui import QIntValidator,QRegExpValidator
 from pulp import *
@@ -43,7 +43,7 @@ class QCalculate(QWidget):
         self.setObjectName("calculate")
         self.years.setValidator(QIntValidator(1, 100))
         self.years.setMinimumWidth(300)
-        self.years.setPlaceholderText("period c de l'intervalle en années")
+        #self.years.setPlaceholderText("period c de l'intervalle en années")
         self.cout,self.draw=QPushButton("Cost",self),QPushButton("Draw",self)
         self.cout.clicked.connect(self.calculCout)
         self.draw.clicked.connect(self.drawGraph)
@@ -59,15 +59,21 @@ class QCalculate(QWidget):
         self.gen.setTemp(int(self.years.text()))
         QMessageBox.about(self, "Cout total","Cout total :"+str(sum(self.fun_opt(self.gen.T, dicts_only=True)[3])))
     def setLayout(self):
-        a0,h,h1=QVBoxLayout(),QHBoxLayout(),QHBoxLayout()
+        a0,h,h1,h2=QVBoxLayout(),QHBoxLayout(),QHBoxLayout(),QHBoxLayout()
         h.addStretch(1)
         h.addWidget(self.cout)
         h.addWidget(self.draw)
         h.addStretch(1)
         a0.addStretch(1)
+
+        h2.addStretch(1)
+        h2.addWidget(QLabel("period c de l'intervalle en années",self))
+        h2.addStretch(1)
+
         h1.addStretch(1)
         h1.addWidget(self.years)
         h1.addStretch(1)
+        a0.addLayout(h2)
         a0.addLayout(h1)
         a0.addLayout(h)
         a0.addStretch(1)

@@ -121,3 +121,77 @@ QPushButton[text='update'],QPushButton[text='Cost'],QPushButton[text='Draw'] {
 QPushButton[text='update']:hover,QPushButton[text='Cost']:hover,QPushButton[text='Draw']:hover{
     color: #fff;
     background-color:#007bff;}
+
+
+/* style login */
+#close {
+    border:none;
+    }
+#loginphoto {
+            background-image:url("images/background-login.jpg");
+            background-repeat: no-repeat; 
+            background-position: center;
+            border :0px solid ;
+            border-top-left-radius :50px;
+            min-width : 200px;
+            min-height :350px;
+        }
+#loginframe {
+            background-color: #ffffff;
+            border :0px solid ;
+            border-bottom-right-radius:50px;}
+#loginproductframe {
+    background-color:rgba(0, 161, 227, 0.7);
+    margin:50px 0 0 0;
+    max-width:200%;}
+#logintitle {
+        text-align:center;
+        font-size: 32px;
+        background-color: #ffffff;
+        height:100px;
+        border: none;
+        margin:5px;
+        }
+#loginproductname {
+        background:transparent;
+        text-align:center;
+        font-size: 18px;
+        border: none;
+        margin:5px 0;}
+#loginproductdisc {
+        background:transparent;
+        text-align:center;
+        font-size: 12px;
+        border: none;
+        margin:5px 0;}
+#loginbutton {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    background-color: #00A1E3 ;
+    padding: 7px 0;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    margin: 1.3em 0;
+            }
+#loginbutton:hover {
+    font: 4rem;
+    }
+#loginframe QPushButton {
+    border:none;}
+#loginframe QLineEdit{
+    font-family: 'Muli', sans-serif;
+    padding: 0.5em 0 0.5em 1.5em;
+    border: 0px solid ;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-bottom-width: 3px;
+    background-color:#FFF;
+    color: rgba( 0, 0,0, 40);
+    font-size: 1rem;
+    margin: 3px 0 ;
+    border-radius:0px;}
+#loginframe QLineEdit:focus{
+    border-bottom-color: #00A1E3;
+    color: #000000;}

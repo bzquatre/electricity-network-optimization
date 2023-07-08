@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication,QMainWindow,QWidget,QTabWidget,QHBoxLayout,QFileDialog
+from PyQt5.QtWidgets import QApplication,QMessageBox,QMainWindow,QWidget,QTabWidget,QHBoxLayout,QFileDialog
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from ui.poles import QPoles
@@ -7,6 +7,8 @@ from ui.resources import QResources
 from ui.requiredenergy import QRequiredEnergys
 from ui.calculate import QCalculate
 from ui.lines import QLines
+from ui.about import QAbout
+from ui.login import LogIn
 import pandas as pd
 import sys,sqlite3,os
 conn=sqlite3.connect('database.db')
@@ -35,23 +37,33 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__(parent=None)
         self.setWindowIcon(QIcon('Icon.ico'))
-        self.setWindowTitle("USTHB")
+        self.setWindowTitle("OptiRés")
         self.setObjectName("main")
         self.setMinimumWidth(700)
-
-        central_widget = QWidget()
+        central_widget ,self.login= QWidget(),LogIn()
         self.setCentralWidget(central_widget)
-
         self.tab_widget = QTabWidget(central_widget)
         self.pages = [ 
-            [QCalculate(self), QIcon(''), 'Calculate'],
+            [QAbout(self), QIcon(''), 'About'],
             [QDataWindo(self), QIcon(''), 'Data'],
-            [QWidget(self), QIcon(''), 'About'],
+            [QCalculate(self), QIcon(''), 'Calculate'],
         ]
-        for page in self.pages:
-            self.tab_widget.addTab(page[0], page[1], page[2])
+        self.login.exit.clicked.connect(self.closeLogin)
+        self.login.frame.btnlogin.clicked.connect(self.userLogin)
+        self.login.show()
+        
+    def closeLogin(self):
+        self.close(),self.login.close()
 
-        self.setLayout()
+    def userLogin(self):
+        if self.login.frame.user.text()=="youcef" and self.login.frame.password.text()=="youcef@2023":
+            for page in self.pages:
+                self.tab_widget.addTab(page[0], page[1], page[2])
+            self.setLayout()
+            self.login.close()
+            mainwindo.showMaximized()
+        else : 
+            QMessageBox.critical(self, "Error","Password or User Incorect")
     def keyPressEvent(self, event):
         modifiers = QApplication.keyboardModifiers()
         if event.key() == Qt.Key_I and modifiers == Qt.ControlModifier:
@@ -105,12 +117,11 @@ class MainWindow(QMainWindow):
 class Application(QApplication):
     def __init__(self):
         super().__init__(sys.argv)
-        self.setApplicationName('USTHB')
+        self.setApplicationName('OptiRés')
         self.setWindowIcon(QIcon('Icon.ico'))
         self.setApplicationVersion('1.2.0')
         self.setStyleSheet(open('style.qss').read())
 if __name__=="__main__":
     app=Application() 
-    mainwindo=MainWindow()
-    mainwindo.showMaximized()  
+    mainwindo=MainWindow() 
     sys.exit(app.exec_())
