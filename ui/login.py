@@ -13,6 +13,8 @@ class LoginPhoto(QFrame):
         self.frame.setObjectName('loginproductframe')
         self.name.setObjectName('loginproductname')
         self.disc.setObjectName('loginproductdisc')
+        self.univ.setObjectName('loginuniv')
+        self.company.setObjectName('logincompany')
         self.disc.setWordWrap(True)
         self.setLayout()
     def setLayout(self):

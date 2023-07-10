@@ -56,7 +56,7 @@ class MainWindow(QMainWindow):
         self.close(),self.login.close()
 
     def userLogin(self):
-        if self.login.frame.user.text()=="youcef" and self.login.frame.password.text()=="youcef@2023":
+        if self.login.frame.user.text()=="Admin" and self.login.frame.password.text()=="USTHB":
             for page in self.pages:
                 self.tab_widget.addTab(page[0], page[1], page[2])
             self.setLayout()

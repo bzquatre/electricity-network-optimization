@@ -164,6 +164,12 @@ QPushButton[text='update']:hover,QPushButton[text='Cost']:hover,QPushButton[text
         font-size: 12px;
         border: none;
         margin:5px 0;}
+#loginuniv,#logincompany {
+        background:transparent;
+        text-align:center;
+        font-size: 12px;
+        border: none;
+        margin:5px 0;}
 #loginbutton {
     color: #ffffff;
     font-size: 1.3rem;
