@@ -1,32 +1,8 @@
-from PyQt5.QtWidgets import QHBoxLayout,QVBoxLayout, QWidget,QLabel
+from PyQt5.QtWidgets import QHBoxLayout,QVBoxLayout, QWidget
+from .commponents import Title,Contains
 
-from PyQt5.QtCore import Qt
-class Title(QLabel):
-    def __init__(self,text='',parent=None):
-        super().__init__(parent=parent,text=text)
-        self.setAlignment(Qt.AlignCenter)
-        self.setStyleSheet("""
-        background:transparent;
-        text-align:center;
-        font-size: 22px;
-        border: none;
-        margin:0 100px;        
-        """)
-class Contains(QLabel):
-    def __init__(self,text='',parent=None):
-        super().__init__(parent=parent,text=text)
-        self.setWordWrap(True)
-        self.setAlignment(Qt.AlignCenter)
-        self.setStyleSheet("""
-        background:transparent;
-        text-align:center;
-        font-size: 14px;
-        border: none;
-        margin:0 100px;        
-        """)
 class QAbout(QWidget):
     def __init__(self, parent: QWidget):
-        
         super().__init__(parent)
         self.setLayout()
     def setLayout(self):

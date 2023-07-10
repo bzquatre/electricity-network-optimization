@@ -109,7 +109,7 @@ class MainWindow(QMainWindow):
                     cur.execute(f"INSERT INTO requiredenergy (year, energy) VALUES ({row['year']}, '{row['value']}')")
                 conn.commit()
         for i in range(5):
-            self.pages[i][0].initResearch(),self.pages[i][0].initTable()
+            self.pages[1][0].pages[i][0].initResearch(),self.pages[1][0].pages[i][0].initTable()
     def setLayout(self):
         layout = QHBoxLayout()
         layout.addWidget(self.tab_widget)

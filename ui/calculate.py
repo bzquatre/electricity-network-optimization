@@ -1,8 +1,8 @@
 
 
-from PyQt5.QtWidgets import QMessageBox,QWidget,QLabel,QHBoxLayout,QLineEdit,QPushButton,QVBoxLayout
-from PyQt5.QtCore import QRegExp, Qt
-from PyQt5.QtGui import QIntValidator,QRegExpValidator
+from PyQt5.QtWidgets import QMessageBox,QWidget,QHBoxLayout,QLineEdit,QPushButton,QVBoxLayout
+from .commponents import Title
+from PyQt5.QtGui import QIntValidator
 from pulp import *
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -67,7 +67,7 @@ class QCalculate(QWidget):
         a0.addStretch(1)
 
         h2.addStretch(1)
-        h2.addWidget(QLabel("period c de l'intervalle en années",self))
+        h2.addWidget(Title("period c de l'intervalle en années",self))
         h2.addStretch(1)
 
         h1.addStretch(1)
